@@ -1,0 +1,43 @@
+﻿<div class="container-fluid p-0">
+    <div class="bg-dark text-white text-center py-5">
+        <h1>🐾 Welcome to PawCare</h1>
+        <p class="lead">Find your perfect pet companion or help a pet find a loving home</p>
+        <a asp-controller="Pet" asp-action="Adopt" class="btn btn-warning btn-lg me-2">Adopt a Pet</a>
+        <a asp-controller="Pet" asp-action="AddPet" class="btn btn-outline-light btn-lg">Add My Pet</a>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h1>🐶</h1>
+                        <h4>Find a Pet</h4>
+                        <p>Browse pets available for adoption and find your perfect companion.</p>
+                        <a asp-controller="Pet" asp-action="Adopt" class="btn btn-primary">Browse Pets</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h1>🏠</h1>
+                        <h4>Add Your Pet</h4>
+                        <p>Register your pet and manage their care and health records.</p>
+                        <a asp-controller="Pet" asp-action="AddPet" class="btn btn-success">Add Pet</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h1>❤️</h1>
+                        <h4>Track Requests</h4>
+                        <p>Track your adoption requests and stay updated on their status.</p>
+                        <a asp-controller="Pet" asp-action="MyRequests" class="btn btn-warning">My Requests</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

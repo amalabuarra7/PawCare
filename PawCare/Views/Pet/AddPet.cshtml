@@ -1,0 +1,46 @@
+﻿@model PawCare.Models.Pet
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Add My Pet</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddPet" method="post">
+                        <div class="mb-3">
+                            <label>Pet Name</label>
+                            <input asp-for="Name" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Species (Dog/Cat...)</label>
+                            <input asp-for="Species" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Breed</label>
+                            <input asp-for="Breed" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Age</label>
+                            <input asp-for="Age" type="number" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Description</label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label>Image URL</label>
+                            <input asp-for="ImageUrl" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label>Available for Adoption?</label>
+                            <input asp-for="IsAvailableForAdoption" type="checkbox" />
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Add Pet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

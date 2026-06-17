@@ -1,0 +1,46 @@
+﻿@model List<PawCare.Models.Pet>
+
+<div class="container mt-4">
+    <h2>🐾 My Pets</h2>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    <a asp-action="AddPet" class="btn btn-success mb-3">+ Add New Pet</a>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">You have no pets yet.</div>
+    }
+    <div class="row">
+        @foreach (var pet in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    @if (pet.ImageUrl != null)
+                    {
+                        <img src="@pet.ImageUrl" class="card-img-top" style="height:200px; object-fit:cover;" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@pet.Name</h5>
+                        <p>Species: @pet.Species</p>
+                        <p>Breed: @pet.Breed</p>
+                        <p>Age: @pet.Age years</p>
+                        @if (pet.IsAvailableForAdoption)
+                        {
+                            <span class="badge bg-success">Available for Adoption</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Not Available</span>
+                        }
+                        <div class="mt-2">
+                            <a asp-action="EditPet" asp-route-id="@pet.PetId" class="btn btn-warning btn-sm">✏️ Edit</a>
+                            <a asp-action="DeletePet" asp-route-id="@pet.PetId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">🗑️ Delete</a>
+                            <a asp-controller="Vaccination" asp-action="Index" asp-route-petId="@pet.PetId" class="btn btn-info btn-sm">💉 Vaccinations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

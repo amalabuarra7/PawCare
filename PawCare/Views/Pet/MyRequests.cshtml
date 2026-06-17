@@ -1,0 +1,45 @@
+﻿@model List<PawCare.Models.AdoptionRequest>
+
+<div class="container mt-4">
+    <h2>My Adoption Requests</h2>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">You have no adoption requests yet.</div>
+    }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Species</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.Pet.Name</td>
+                    <td>@request.Pet.Species</td>
+                    <td>@request.Message</td>
+                    <td>
+                        @if (request.Status == "Pending")
+                        {
+                            <span class="badge bg-warning">Pending</span>
+                        }
+                        else if (request.Status == "Approved")
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Rejected</span>
+                        }
+                    </td>
+                    <td>@request.RequestDate.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

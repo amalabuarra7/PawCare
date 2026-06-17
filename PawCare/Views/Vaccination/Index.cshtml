@@ -1,0 +1,49 @@
+﻿@model List<PawCare.Models.Vaccination>
+
+<div class="container mt-4">
+    <h2>💉 Vaccinations for @ViewBag.Pet.Name</h2>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    <a asp-action="Add" asp-route-petId="@ViewBag.Pet.PetId" class="btn btn-success mb-3">+ Add Vaccination</a>
+    <a asp-controller="Pet" asp-action="MyPets" class="btn btn-secondary mb-3">← Back to My Pets</a>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">No vaccinations recorded yet.</div>
+    }
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Vaccine Name</th>
+                <th>Date Given</th>
+                <th>Next Due Date</th>
+                <th>Notes</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@v.VaccineName</td>
+                    <td>@v.DateGiven.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (v.NextDueDate < DateTime.Now)
+                        {
+                            <span class="text-danger fw-bold">@v.NextDueDate.ToString("dd/MM/yyyy") ⚠️ Overdue</span>
+                        }
+                        else
+                        {
+                            <span class="text-success">@v.NextDueDate.ToString("dd/MM/yyyy")</span>
+                        }
+                    </td>
+                    <td>@v.Notes</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@v.VaccinationId" class="btn btn-danger btn-sm" onclick="return confirm('Delete this vaccination?')">🗑️ Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
